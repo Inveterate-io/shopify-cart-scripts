@@ -5,13 +5,13 @@ SHIPPING_CODES = [
   "Standard",
   "Express"
 ]
-MESSAGE = "Free shipping for subscribers!"
+MESSAGE = "Discountd shipping for subscribers!"
 
 ########
 # DO NOT EDIT PAST THIS POINT
 ########
 
-class InveterateFreeShipping 
+class InveterateDiscountedShipping 
   def initialize()
     @percent_off = PERCENT_OFF * 0.01
     @shipping_codes = SHIPPING_CODES
@@ -41,7 +41,7 @@ class InveterateFreeShipping
 end
 
 CAMPAIGNS = [
-  InveterateFreeShipping.new()
+  InveterateDiscountedShipping.new()
 ]
 
 CAMPAIGNS.each do |campaign|
