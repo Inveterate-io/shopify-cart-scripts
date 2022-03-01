@@ -61,14 +61,14 @@ class InveterateFreeShipping
   end
   
   def start
+    return unless @cart.customer
+    return unless @cart.customer.tags.include? "inveterate-subscriber"
     return unless check_purchase_amount
     return unless check_item_quantity
     return unless check_product_ids
     return unless check_countries
     
     @shipping_rates.each do |shipping_rate|
-      next unless @cart.customer
-      next unless @cart.customer.tags.include? "inveterate-subscriber"
       return unless check_max_shipping_price(shipping_rate)
 
       shipping_rate.apply_discount(

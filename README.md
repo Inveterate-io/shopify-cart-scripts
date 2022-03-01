@@ -7,6 +7,10 @@ A bunch of scripts for merchants to use in relation to Inveterate in the Shopify
 
 ## Custom Scripts
 
-### Shipping
+### Shipping Scripts
 
+- Discounted Shipping
 - Free Shipping
+
+### Line Item Scripts
+- Member Only Pricing
