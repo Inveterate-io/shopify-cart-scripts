@@ -1,5 +1,5 @@
 # Editable Values
-MESSAGE = '20% off for members only!'
+MESSAGE = '$100 off for members only!'
 DISCOUNT_FIXED = 100 # Measured in dollars
 DISCOUNT_TAG = 'member-only-pricing'
 
