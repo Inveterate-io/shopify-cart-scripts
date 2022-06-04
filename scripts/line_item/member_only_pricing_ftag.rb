@@ -1,7 +1,7 @@
 # Editable Values
-MESSAGE = 'Member only pricing!'
-DISCOUNT_PERCENTAGE = 20
-PRODUCT_ID_LIST = []
+MESSAGE = '20% off for members only!'
+DISCOUNT_FIXED = 100 # Measured in dollars
+DISCOUNT_TAG = 'member-only-pricing'
 
 ########
 # DO NOT EDIT PAST THIS POINT
@@ -10,8 +10,8 @@ PRODUCT_ID_LIST = []
 class MemberOnlyPricing 
   def initialize()
     @message = MESSAGE
-    @percentage_off = (100 - DISCOUNT_PERCENTAGE) * 0.01
-    @product_id_list = PRODUCT_ID_LIST
+    @fixed_off = Money.derived_from_presentment(customer_cents: DISCOUNT_FIXED * 100.0)
+    @discount_tag = DISCOUNT_TAG
   end
 
   def run(cart)
@@ -26,13 +26,9 @@ class MemberOnlyPricing
     return unless @cart.customer.tags.include? "inveterate-subscriber"
 
     @cart.line_items.each do |line_item|
-      if @product_id_list.size > 0
-        unless @product_id_list.include? line_item.variant.product.id
-          next
-        end
-      end
+      next unless line_item.variant.product.tags.include? @discount_tag
       line_item.change_line_price(
-        line_item.line_price * @percentage_off,
+       line_item.line_price - (@fixed_off * line_item.quantity),
         message: @message
       )
     end

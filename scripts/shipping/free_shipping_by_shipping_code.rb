@@ -5,7 +5,7 @@ SHIPPING_CODES = [
   "Standard",
   "Express"
 ]
-MESSAGE = "Discountd shipping for subscribers!"
+MESSAGE = "Free shipping for subscribers!"
 
 ########
 # DO NOT EDIT PAST THIS POINT
