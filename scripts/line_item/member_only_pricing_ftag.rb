@@ -7,7 +7,7 @@ DISCOUNT_TAG = 'member-only-pricing'
 # DO NOT EDIT PAST THIS POINT
 ########
 
-class MemberOnlyPricing 
+class InveterateMemberOnlyPricingFTAG
   def initialize()
     @message = MESSAGE
     @fixed_off = Money.derived_from_presentment(customer_cents: DISCOUNT_FIXED * 100.0)
@@ -36,7 +36,7 @@ class MemberOnlyPricing
 end
 
 CAMPAIGNS = [
-  MemberOnlyPricing.new()
+  InveterateMemberOnlyPricingFTAG.new()
 ]
 
 CAMPAIGNS.each do |campaign|

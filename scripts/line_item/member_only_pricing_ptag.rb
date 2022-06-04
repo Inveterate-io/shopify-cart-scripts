@@ -7,7 +7,7 @@ DISCOUNT_TAG = 'member-only-pricing'
 # DO NOT EDIT PAST THIS POINT
 ########
 
-class MemberOnlyPricing 
+class InveterateMemberOnlyPricingPTAG
   def initialize()
     @message = MESSAGE
     @percentage_off = (100 - DISCOUNT_PERCENTAGE) * 0.01
@@ -36,7 +36,7 @@ class MemberOnlyPricing
 end
 
 CAMPAIGNS = [
-  MemberOnlyPricing.new()
+  InveterateMemberOnlyPricingPTAG.new()
 ]
 
 CAMPAIGNS.each do |campaign|

@@ -7,7 +7,7 @@ PRODUCT_ID_LIST = [7696292020478]
 # DO NOT EDIT PAST THIS POINT
 ########
 
-class MemberOnlyPricing 
+class InveterateMemberOnlyPricingFPID
   def initialize()
     @message = MESSAGE
     @fixed_off = Money.derived_from_presentment(customer_cents: DISCOUNT_FIXED * 100.0)
@@ -36,7 +36,7 @@ class MemberOnlyPricing
 end
 
 CAMPAIGNS = [
-  MemberOnlyPricing.new()
+  InveterateMemberOnlyPricingFPID.new()
 ]
 
 CAMPAIGNS.each do |campaign|

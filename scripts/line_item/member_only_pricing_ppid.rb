@@ -7,7 +7,7 @@ PRODUCT_ID_LIST = [7696292020478]
 # DO NOT EDIT PAST THIS POINT
 ########
 
-class MemberOnlyPricing 
+class InveterateMemberOnlyPricingPPID
   def initialize()
     @message = MESSAGE
     @percentage_off = (100 - DISCOUNT_PERCENTAGE) * 0.01
@@ -36,7 +36,7 @@ class MemberOnlyPricing
 end
 
 CAMPAIGNS = [
-  MemberOnlyPricing.new()
+  InveterateMemberOnlyPricingPPID.new()
 ]
 
 CAMPAIGNS.each do |campaign|

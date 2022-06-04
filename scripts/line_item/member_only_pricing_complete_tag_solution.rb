@@ -5,7 +5,7 @@ MESSAGE = 'Member only pricing!'
 # DO NOT EDIT PAST THIS POINT
 ########
 
-class MemberOnlyPricing 
+class InveterateMemberOnlyPricingCTS
   def initialize()
     @message = MESSAGE
   end
@@ -67,7 +67,7 @@ class MemberOnlyPricing
 end
 
 CAMPAIGNS = [
-  MemberOnlyPricing.new()
+  InveterateMemberOnlyPricingCTS.new()
 ]
 
 CAMPAIGNS.each do |campaign|
