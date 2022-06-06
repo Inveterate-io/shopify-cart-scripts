@@ -53,6 +53,12 @@ class InveterateMemberOnlyPricingCTS
     
     return nil unless discount_type
     return nil unless discount_amount
+
+    # Checks if variant id is in tag to provide discount to tag
+    if tag_chunks[3]
+      variant_id = tag_chunks[3].to_i
+      return nil unless line_item.variant.id == variant_id
+    end
     
     if discount_type == 'percentage'
       discount = (100.0 - discount_amount) * 0.01

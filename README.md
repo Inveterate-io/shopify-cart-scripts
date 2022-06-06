@@ -11,6 +11,7 @@ A bunch of scripts for merchants to use in relation to Inveterate in the Shopify
 
 - free_shipping_by_shipping_code.rb: Gives free shipping based on the name of the shipping code
 - free_shipping_pid.rb: Free shipping based on product ID
+- free_shipping_by_tag.rb: Free shipping based on product tags
 
 ### Line Item Scripts
 - member_only_pricing_ppid.rb: Member only pricing utilizing a list of product IDs providing a percentage off discount to individual line items
@@ -19,3 +20,4 @@ A bunch of scripts for merchants to use in relation to Inveterate in the Shopify
 - member_only_pricing_ptag: Provides a specific percentage discount to individual line items that have the specified tag
 - member_only_pricing_ftag: Provides a specific fixed amount discount to individual line items that have the specified tag
 - pre_member_only_pricing_complete_tag_solution: Applies the complete tag solution for member only pricing to non-members who have the membership product in their cart.
+- pre_member_only_pricing_complete_tag_solution_combined: Applies the complete tag solution for member only pricing to non-members who have the membership product in their cart and members of the program.
