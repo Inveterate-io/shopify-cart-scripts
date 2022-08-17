@@ -160,32 +160,3 @@ CAMPAIGNS.each do |campaign|
 end
 
 Output.cart = Input.cart
-
-
-
-
-
-
-
-
-
-
-
-# Editable Values
-MESSAGE = 'Member only pricing!'
-
-########
-# DO NOT EDIT PAST THIS POINT
-########
-
-
-
-CAMPAIGNS = [
-  InveteratePreMemberOnlyPricingCTS.new()
-]
-
-CAMPAIGNS.each do |campaign|
-  campaign.run(Input.cart)
-end
-
-Output.cart = Input.cart
