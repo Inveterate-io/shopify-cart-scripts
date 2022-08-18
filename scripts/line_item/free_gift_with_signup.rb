@@ -1,6 +1,5 @@
 # Editable Values
 MESSAGE = 'FREE GIFT FOR SIGNING UP!'
-ENABLE_ON_SIGNUP = true
 
 ########
 # DO NOT EDIT PAST THIS POINT
@@ -31,12 +30,10 @@ class InveterateFreeGiftWithSignup
   def valid_cart?
     valid = false
 
-    if @enable_on_signup
-      @line_items.each do |line_item|
-        if line_item.variant.product.tags.include? 'inveterate-product'
-          valid = true
-          break
-        end
+    @line_items.each do |line_item|
+      if line_item.variant.product.tags.include? 'inveterate-product'
+        valid = true
+        break
       end
     end
 
