@@ -8,7 +8,6 @@ MESSAGE = 'FREE GIFT FOR SIGNING UP!'
 class InveterateFreeGiftWithSignup
   def initialize()
     @message = MESSAGE
-    @enable_on_signup = ENABLE_ON_SIGNUP
   end
 
   def run(cart)
