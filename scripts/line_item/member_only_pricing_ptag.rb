@@ -2,6 +2,8 @@
 MESSAGE = '20% off for members only!'
 DISCOUNT_PERCENTAGE = 20
 DISCOUNT_TAG = 'member-only-pricing'
+ALLOW_DISCOUNT_CODE = true
+DISCOUNT_CODE_REJECTION_MESSAGE = 'Discount code cannot be used with this promotion'
 
 ########
 # DO NOT EDIT PAST THIS POINT
@@ -12,6 +14,8 @@ class InveterateMemberOnlyPricingPTAG
     @message = MESSAGE
     @percentage_off = (100 - DISCOUNT_PERCENTAGE) * 0.01
     @discount_tag = DISCOUNT_TAG
+    @allow_discount_code = ALLOW_DISCOUNT_CODE
+    @discount_code_rejection_message = DISCOUNT_CODE_REJECTION_MESSAGE
   end
 
   def run(cart)
@@ -22,8 +26,9 @@ class InveterateMemberOnlyPricingPTAG
   private
 
   def start
-    return unless @cart.customer
-    return unless @cart.customer.tags.include? "inveterate-subscriber"
+    return unless is_member? or is_membership_product_in_cart?
+
+    reject_discount_code unless @allow_discount_code
 
     @cart.line_items.each do |line_item|
       next unless line_item.variant.product.tags.include? @discount_tag
@@ -32,6 +37,29 @@ class InveterateMemberOnlyPricingPTAG
         message: @message
       )
     end
+  end
+
+  def is_member?
+    return false unless @cart.customer
+    return false unless @cart.customer.tags.include? "inveterate-subscriber"
+    return true
+  end
+
+  def is_membership_product_in_cart?
+    item_in_cart = false
+    @cart.line_items.each do |item|
+      if item.variant.product.tags.include? "inveterate-product"
+        item_in_cart = true
+        break
+      end
+    end
+    return item_in_cart
+  end
+
+  def reject_discount_code
+    discount_code = @cart.discount_code
+    return unless discount_code
+    discount_code.reject({ message: @discount_code_rejection_message })
   end
 end
 
