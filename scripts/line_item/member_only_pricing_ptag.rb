@@ -27,8 +27,7 @@ class InveterateMemberOnlyPricingPTAG
 
   def start
     return unless is_member? or is_membership_product_in_cart?
-
-    reject_discount_code unless @allow_discount_code
+    discount_applied = false
 
     @cart.line_items.each do |line_item|
       next unless line_item.variant.product.tags.include? @discount_tag
@@ -36,6 +35,11 @@ class InveterateMemberOnlyPricingPTAG
         line_item.line_price * @percentage_off,
         message: @message
       )
+      discount_applied = true
+    end
+
+    if discount_applied and !@allow_discount_code
+      reject_discount_code
     end
   end
 
